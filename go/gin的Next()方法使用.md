@@ -7,8 +7,8 @@ book: Strcpy
 book_title: gin的Next()方法使用
 date: 2021-12-20 02:47:57
 description:
-github:
-github_page:
+github: https://github.com/jinfeijie/posts
+github_page: https://github.com/jinfeijie/posts/blob/master/go/gin%E7%9A%84Next()%E6%96%B9%E6%B3%95%E4%BD%BF%E7%94%A8.md
 id: post-822
 ---
 
@@ -31,14 +31,14 @@ id: post-822
 
 ### 不使用 `Next()`
 假设我们去编写这样的一段代码
-```
+```golang
 route := gin.Default()
 route.Use(middleware.RequestID)
 route.Use(middleware.Log)
 route.GET("/", app.Index)
 ```
 而`middleware.RequestID`的实现如下
-```
+```golang
 func RequestID(ctx *gin.Context) {
 	log.Println("request start")
 	ctx.Set("request_id", Uid())
@@ -46,14 +46,14 @@ func RequestID(ctx *gin.Context) {
 }
 ```
 `middleware.Log`的实现如下
-```
+```golang
 func Log(ctx *gin.Context) {
 	log.Println("log start")
 	log.Println("log end")
 }
 ```
 `app.Index`的实现如下
-```
+```golang
 func Index(ctx *gin.Context) {
 	log.Println(ctx.Get("request_id"))
 	ctx.JSON(http.StatusOK, "ok")
@@ -72,7 +72,7 @@ func Index(ctx *gin.Context) {
 ### 使用 `Next()`
 那加入了`Next()`后怎么执行呢
 如下为两个中间加入后的实际代码
-```
+```golang
 func RequestID(ctx *gin.Context) {
 	log.Println("request start")
 	ctx.Set("request_id", Uid())
@@ -81,7 +81,7 @@ func RequestID(ctx *gin.Context) {
 }
 ```
 
-```
+```golang
 func Log(ctx *gin.Context) {
 	log.Println("log start")
 	ctx.Next()
@@ -102,12 +102,12 @@ func Log(ctx *gin.Context) {
 
 ### 分析Next()的实现
 `Next()`方法的实现非常简单
-```
+```golang
 	route.Use(middleware.RequestID)
 	route.Use(middleware.Log)
 ```
 代码入口加载中间件就是往`c.handlers`中append这个方法。
-```
+```golang
 func (c *Context) Next() {
 	c.index++
 	for c.index < int8(len(c.handlers)) {
@@ -123,7 +123,8 @@ func (c *Context) Next() {
 
 1. 计算业务程序实际耗时
 我们来写一个`ExecTime`的中间件
-```
+
+```golang
 func ExecTime(ctx *gin.Context) {
 		log.Println("exec_time start")
 		startTime := time.Now()
@@ -133,7 +134,7 @@ func ExecTime(ctx *gin.Context) {
 }
 ```
 放在离路由开始最近的位置
-```
+```golang
 	route := gin.Default()
 	route.Use(middleware.RequestID)
 	route.Use(middleware.Log)

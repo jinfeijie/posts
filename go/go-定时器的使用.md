@@ -7,8 +7,8 @@ book: Strcpy
 book_title: go 定时器的使用
 date: 2021-12-20 02:42:21
 description:
-github:
-github_page: 
+github: https://github.com/jinfeijie/posts
+github_page: https://github.com/jinfeijie/posts/blob/master/go/go-%E5%AE%9A%E6%97%B6%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8.md
 id: post-842
 ---
 
@@ -21,7 +21,7 @@ go的time包里面提供了两个函数用于延时，分别是`func After(d Dur
 
 
 `NewTicker`的实现如下
-```
+```golang
 func NewTicker(d Duration) *Ticker {
 	if d <= 0 {
 		panic(errors.New("non-positive interval for NewTicker"))
@@ -45,7 +45,7 @@ func NewTicker(d Duration) *Ticker {
 ```
 
 Ticker实现
-```
+```golang
 // A Ticker holds a channel that delivers `ticks' of a clock
 // at intervals.
 type Ticker struct {
@@ -62,7 +62,7 @@ r: runtime定时器，该定时器即系统管理的定时器，对上层应用�
 `Ticker.C`管道每隔一个延时周期就会接收到一个事件，用于延时任务的触发。
 
 ### 实现一个延时
-```
+```golang
 func main() {
 	fmt.Println(time.Now().Unix())
 	<-time.Tick(1*time.Second)
@@ -71,7 +71,7 @@ func main() {
 ```
 
 ### 实现一个定时器
-```
+```golang
 func main() {
 	timer := time.NewTicker(time.Second)
 	for   {
@@ -82,7 +82,7 @@ func main() {
 ```
 
 ### 错误示例
-```
+```golang
 func main() {
 	for   {
 		select {
@@ -94,7 +94,7 @@ func main() {
 ```
 
 把`time.After`内的方法实现一遍，输出每次的定时器的内存地址
-```
+```golang
 func main() {
 	for   {
 		select {
@@ -111,7 +111,7 @@ func main() {
 可以看到，每一次调用方法都会生成一个定时器，不断开辟内存空间。
 
 ### 正确示例
-```
+```golang
 func main() {
 	t := time.NewTicker(time.Second)
 	for   {

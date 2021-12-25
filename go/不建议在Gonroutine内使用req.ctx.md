@@ -7,6 +7,8 @@ categories: # 分类
 - go语言系列
 book: Strcpy
 book_title: 不建议在Gonroutine内使用req.ctx
+github: https://github.com/jinfeijie/posts
+github_page: https://github.com/jinfeijie/posts/blob/master/go/%E4%B8%8D%E5%BB%BA%E8%AE%AE%E5%9C%A8Gonroutine%E5%86%85%E4%BD%BF%E7%94%A8req.ctx.md
 id: post-777
 ---
 
@@ -14,7 +16,7 @@ id: post-777
 
 # 先来看一个现象
 代码如下：
-```go
+```golang
 func(ctx *gin.Context) {
 	_uuid := uuid.New().String()
 	ctx.Set("uuid", _uuid)
@@ -49,7 +51,7 @@ func(ctx *gin.Context) {
 
 Gin框架在gin.Run里面实现了调用http.ListenAndServe方法。因为gin.Engine实现了接口http.Handler，并且在http.ListenAndServe的第二位参数将engine传入，所以服务启动后的请求都由gin.ServeHTTP处理。
 
-```go
+```golang
 func (engine *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	c := engine.pool.Get().(*Context)
 	c.writermem.reset(w)
@@ -81,7 +83,7 @@ func (engine *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 goroutine非野生goroutine，goroutine在主请求中可以被管控到。在主请求的生命周期内，goroutine创建后退出。
 比如下面这种
 
-```go
+```golang
 var wg sync.WaitGroup
 wg.Add(2)
 go func(ctx *gin.Context) {
@@ -103,7 +105,7 @@ Gin框架在充分利用资源的同时也给服务带来了风险。所以应�
 gin框架提供了copy方法为不得不使用上下文传递的场景提供支持。
 复制后的上下文可以安全地在请求外的使用。
 
-```go
+```golang
 // Copy returns a copy of the current context that can be safely used outside the request's scope.
 // This has to be used when the context has to be passed to a goroutine.
 func (c *Context) Copy() *Context {

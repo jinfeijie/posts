@@ -7,8 +7,8 @@ book: Strcpy
 book_title: gin的Abort()方法使用
 date: 2021-12-20 02:46:12
 description:
-github:
-github_page:
+github: https://github.com/jinfeijie/posts
+github_page: https://github.com/jinfeijie/posts/blob/master/go/gin%E7%9A%84Abort-%E6%96%B9%E6%B3%95%E4%BD%BF%E7%94%A8.md
 id: post-837
 ---
 
@@ -22,7 +22,7 @@ gin的`Abort()`方法使用
 
 先来实现一个简单的http服务
 
-```
+```golang
 package main
 
 import (
@@ -51,7 +51,7 @@ func main() {
 
 我们在程序中引入了4个中间件，来实现非嵌入式的业务处理。
 简化后的中间件代码如下（demo代码中，4个中间件只有数字的差异）
-```
+```golang
 package md1
 
 import (
@@ -85,7 +85,7 @@ md1 end
 #### md1 是风控模块
 假设中间1是一个风控模块，当检测到请求参数异常时，立即进行拦截，不再继续执行后续操作。
 我们可以在A中加入`Abort()`，让他跳过后续步骤的执行。中间件1的实现代码
-```
+```golang
 func Md1(ctx *gin.Context) {
 	fmt.Println("md1 start")
 	if ctx.Query("danger") == "1" {
@@ -103,7 +103,7 @@ md1 end
 ```
 #### md2是登录验证模块
 假设中间2是一个登录验证模块，未登录的用户会在这一层被拦截
-```
+```golang
 func Md2(ctx *gin.Context) {
 	fmt.Println("md2 start")
 	if ctx.Query("login") == "0" {
@@ -125,7 +125,7 @@ md1 end
 ### `Abort()`如何实现它的功能
 从上一篇`Next`的文章中我们可以知道中间件的执行过程是 `Md1.start` -> `Md2.start` -> `Md3.start` -> `service` -> `Md3.end` -> `Md2.end` -> `Md1.end`。当中间件中遇到异常执行了abort时，他会中止执行后续的中间件的逻辑，直接结束掉。流程就是`Md1.start` -> `Md2.start` -> `Md2.end` -> `Md1.end`。
 那`Abort()`是如何实现他的这个功能的呢？查看代码后会发现，它的实现非常简单，只有一行代码。
-```
+```golang
 c.index = abortIndex
 ```
 它的作用就是把中间件的索引位放置到第64位，直接跳过前置的中间件的运行。` (const abortIndex = (1<<7 - 1) / 2 )`
