@@ -8,7 +8,7 @@ book_title: Go抽象语法树（AST）实用指南 （一）
 date: 2021-12-25 22:58:00
 description:
 github: https://github.com/jinfeijie/posts
-github_page: https://github.com/jinfeijie/posts/blob/master/infra/Go%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91%EF%BC%88AST%EF%BC%89%E5%AE%9E%E7%94%A8%E6%8C%87%E5%8D%97%20%EF%BC%88%E4%B8%80%EF%BC%89.md
+github_page: https://github.com/jinfeijie/posts/blob/master/AST/Go%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91%EF%BC%88AST%EF%BC%89%E5%AE%9E%E7%94%A8%E6%8C%87%E5%8D%97%20%EF%BC%88%E4%B8%80%EF%BC%89.md
 id: post-2112252258 
 ---
 
