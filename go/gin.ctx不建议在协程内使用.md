@@ -1,18 +1,18 @@
 ---
-title: 不建议在Gonroutine内使用req.ctx
-seo_title: 不建议在Gonroutine内使用req.ctx
+title: gin.ctx不建议在协程内使用
+seo_title: gin.ctx不建议在协程内使用
 date: 2020-12-31 00:45:00
 description: 千万不要再请求里面，把上下文直接传递到野生goroutine里面
 categories: # 分类
 - go语言系列
 book: Strcpy
-book_title: 不建议在Gonroutine内使用req.ctx
+book_title: gin.ctx不建议在协程内使用
 github: https://github.com/jinfeijie/posts
 github_page: https://github.com/jinfeijie/posts/blob/master/go/%E4%B8%8D%E5%BB%BA%E8%AE%AE%E5%9C%A8Gonroutine%E5%86%85%E4%BD%BF%E7%94%A8req.ctx.md
 id: post-777
 ---
 
-> 首先下个结论：千万不要再请求里面，把上下文直接传递到野生goroutine里面
+> 首先给个结论：千万不要再请求里面，把上下文直接传递到野生goroutine里面
 
 # 先来看一个现象
 代码如下：
