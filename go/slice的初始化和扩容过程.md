@@ -23,9 +23,9 @@ slice表示一个拥有相同数据类型的可变长度的序列。
 
 ```go
 type slice struct {
- array unsafe.Pointer
- len   int
- cap   int
+  array unsafe.Pointer
+  len   int
+  cap   int
 }
 ```
 
@@ -38,17 +38,17 @@ type slice struct {
 ```go
 // NewSlice returns the slice Type with element type elem.
 func NewSlice(elem *Type) *Type {
- if t := elem.Cache.slice; t != nil {
-  if t.Elem() != elem {
-   Fatalf("elem mismatch")
+  if t := elem.Cache.slice; t != nil {
+    if t.Elem() != elem {
+      Fatalf("elem mismatch")
+    }
+    return t
   }
-  return t
- }
 
- t := New(TSLICE)
- t.Extra = Slice{Elem: elem}
- elem.Cache.slice = t
- return t
+  t := New(TSLICE)
+  t.Extra = Slice{Elem: elem}
+  elem.Cache.slice = t
+  return t
 }
 ```
 
@@ -57,7 +57,7 @@ func NewSlice(elem *Type) *Type {
 ```go
 // Slice contains Type fields specific to slice types.
 type Slice struct {
- Elem *Type // element type
+  Elem *Type // element type
 }
 ```
 
@@ -71,21 +71,21 @@ slice在运行时，会通过`runtime.makeslice`在内存上开辟一块连续�
 
 ```go
 func makeslice(et *_type, len, cap int) unsafe.Pointer {
- mem, overflow := math.MulUintptr(et.size, uintptr(cap))
- if overflow || mem > maxAlloc || len < 0 || len > cap {
-  mem, overflow := math.MulUintptr(et.size, uintptr(len))
-  if overflow || mem > maxAlloc || len < 0 {
-   panicmakeslicelen()
+  mem, overflow := math.MulUintptr(et.size, uintptr(cap))
+  if overflow || mem > maxAlloc || len < 0 || len > cap {
+    mem, overflow := math.MulUintptr(et.size, uintptr(len))
+    if overflow || mem > maxAlloc || len < 0 {
+      panicmakeslicelen()
+    }
+    panicmakeslicecap()
   }
-  panicmakeslicecap()
- }
 
- return mallocgc(mem, et, true)
+  return mallocgc(mem, et, true)
 }
 ```
 
 如代码所示，通过[`math.MulUintptr`](https://github.com/golang/go/blob/go1.17/src/runtime/internal/math/math.go#L13)函数计算出占用空间的大小，以及是否内存溢出。
-他内部的计算公式为 `et.size * cap`。翻译一下就是`开辟的内存大小 = slice内部元素的大小 * 容量作为起始的内存`。
+他内部的计算公式为 `et.size * cap`。翻译一下就是`开辟的内存大小 = slice内部元素的大小 * 容量`作为起始的内存。
 
 从代码里我们可以得知三个信息：
 
@@ -111,26 +111,26 @@ slice是一个可变长度的序列的，支持`append`方法往里面新增呢�
 
 ```go
 func growslice(et *_type, old slice, cap int) slice {
- newcap := old.cap
- doublecap := newcap + newcap
- if cap > doublecap {
-  newcap = cap
- } else {
-  if old.cap < 1024 {
-   newcap = doublecap
-  } else {
-   // Check 0 < newcap to detect overflow
-   // and prevent an infinite loop.
-   for 0 < newcap && newcap < cap {
-    newcap += newcap / 4
-   }
-   // Set newcap to the requested cap when
-   // the newcap calculation overflowed.
-   if newcap <= 0 {
+  newcap := old.cap
+  doublecap := newcap + newcap
+  if cap > doublecap {
     newcap = cap
-   }
+    } else {
+      if old.cap < 1024 {
+      newcap = doublecap
+    } else {
+      // Check 0 < newcap to detect overflow
+      // and prevent an infinite loop.
+      for 0 < newcap && newcap < cap {
+        newcap += newcap / 4
+      }
+      // Set newcap to the requested cap when
+      // the newcap calculation overflowed.
+      if newcap <= 0 {
+        newcap = cap
+      }
+    }
   }
- }
 }
 ```
 
@@ -152,12 +152,12 @@ func growslice(et *_type, old slice, cap int) slice {
 在数据发生复制时，通过调用`slicecopy`就可以实现数据复制。而`slicecopy`方法的实现，也比初始化和扩容简单很多。如果远数据大小只有1，则直接进行了指针赋值。其他情况则时调用了`memmove`执行了内存数据复制。
 
 ```go
- if size == 1 { // common case worth about 2x to do here
-  // TODO: is this still worth it with new memmove impl?
-  *(*byte)(toPtr) = *(*byte)(fromPtr) // known to be a byte pointer
- } else {
-  memmove(toPtr, fromPtr, size)
- }
+  if size == 1 { // common case worth about 2x to do here
+    // TODO: is this still worth it with new memmove impl?
+    *(*byte)(toPtr) = *(*byte)(fromPtr) // known to be a byte pointer
+  } else {
+    memmove(toPtr, fromPtr, size)
+  }
 ```
 
 相比于循环遍历切片，再往新的切片上复制，memmove性能上占据了更大的优势。但是在较大容量的切片复制上，通过此方法会开辟出大量的内存空间。在使用的时候需要注意对内存性能的影响。
