@@ -12,7 +12,7 @@ categories: # 分类
 book: Strcpy
 book_title: 如何设计一个几十万TPS的实时位置上报系统
 github: https://github.com/jinfeijie/posts
-github_page: https://github.com/jinfeijie/posts/blob/master/infra/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E5%87%A0%E5%8D%81%E4%B8%87TPS%E7%9A%84%E5%AE%9E%E6%97%B6%E4%BD%8D%E7%BD%AE%E4%B8%8A%E6%8A%A5%E7%B3%BB%E7%BB%9F.md
+github_page: https://github.com/jinfeijie/posts/blob/master/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E5%87%A0%E5%8D%81%E4%B8%87TPS%E7%9A%84%E5%AE%9E%E6%97%B6%E4%BD%8D%E7%BD%AE%E4%B8%8A%E6%8A%A5%E7%B3%BB%E7%BB%9F.md
 id: post-20220627011900
 ---
 
