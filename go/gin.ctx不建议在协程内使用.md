@@ -38,11 +38,11 @@ func(ctx *gin.Context) {
 请求开始生成一个uuid，设置进上下文中。开启一个协程，传入上下文和生成的uuid。协程内sleep一秒后读取上下文中的的uuid是否与与传入的uuid一致。
 
 ① 模拟请求，1秒1次
-![](https://jinfeijie.cn/wp-content/uploads/2021/12/req-1s-1p.png)
+![](https://tva1.sinaimg.cn/large/e6c9d24ely1h4ebbmdp45j216y0d4428.jpg)
 ② 模拟请求，1秒2次
-![](https://jinfeijie.cn/wp-content/uploads/2021/12/req-1s-2p.png)
+![](https://tva1.sinaimg.cn/large/e6c9d24ely1h4ebbm9sv4j210j0jbwlt.jpg)
 ③ 模拟请求，压测模式
-![](https://jinfeijie.cn/wp-content/uploads/2021/12/req-bench.png)
+![](https://tva1.sinaimg.cn/large/e6c9d24ely1h4ebbm1e1xj20zh085q53.jpg)
 ①中全部是一致
 ②中不一致少于一致
 ③出现大量不一致，压测尾部会有少量一致

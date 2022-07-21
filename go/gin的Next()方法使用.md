@@ -25,7 +25,7 @@ id: post-822
 
 来自SF的引用文章：[goalng框架Gin中间件的c.Next()有什么作用？](https://segmentfault.com/q/1010000020256918 "goalng框架Gin中间件的c.Next()有什么作用？")
 
-![洋葱模型](https://jinfeijie.cn/wp-content/uploads/2020/02/943491-4030de75a169e4c8.png)
+![洋葱模型](https://tva1.sinaimg.cn/large/e6c9d24ely1h4ebbn59jrj20da0c33zj.jpg)
 
 上图可以说是Next()方法的一个形象化的解释
 
