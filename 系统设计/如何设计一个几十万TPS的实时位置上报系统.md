@@ -22,7 +22,7 @@ id: post-20220627011900
 
 ### 需求分析
 
-![实时位置收集](https://tva1.sinaimg.cn/large/e6c9d24ely1h4ebwtppnej21860u0wie.jpg)
+![实时位置收集](https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h4ebwtppnej21860u0wie.jpg)
 需求简单拆解可以分为明面上的需求：
 1. 位置上报（我之前负责的业务为1s一次上报）
 2. 业务实时路径查询
@@ -61,7 +61,7 @@ id: post-20220627011900
 * demo-risk-service
 
 #### 流程图
-![](https://tva1.sinaimg.cn/large/e6c9d24ely1h4ebzfs4r8j20va0u0dhn.jpg)
+![](https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h4ebzfs4r8j20va0u0dhn.jpg)
 
 ##### 生成最短路径
 在订单生成后，订单数据会被同步到算法路径规划服务中。服务会根据地址和站点的位置，计算出相对合理的路线。但是在配送之前，路径规划完成之后，用户再一次修改地址，已经计算完成的最短路径也需要重新计算。

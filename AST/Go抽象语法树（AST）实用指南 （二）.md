@@ -69,7 +69,7 @@ grade == 四(3)班 && age > 10
 
  通过AST抽象语法树可以看到，表达式已经被准确地解析出来了。正如我们理解的，优先解析了最外层的 `&&` 。`&&` 前后的两个判断条件各自成为一个二进制节点。二进制节点
 
-![](https://tva1.sinaimg.cn/large/008i3skNgy1gxrpsmy2e1j31he0u0432.jpg)
+![](https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008i3skNgy1gxrpsmy2e1j31he0u0432.jpg)
 
 
 ### 实现一个变量解析器（二元表达式）
