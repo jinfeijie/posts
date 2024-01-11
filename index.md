@@ -19,5 +19,5 @@ Go语言源代码里面，有三个比较重要的目录，分别是`cmd/compile
 
 Xmind海外版提供了在线编辑能力，使用起来比较方便。在OneDrive的加持下可以支持Web + 桌面的操作体验。获取知识图谱点击：[https://1drv.ms/u/s!AooQqTjUoO6-gm9Xt_fEWSGK65Bi](https://1drv.ms/u/s!AooQqTjUoO6-gm9Xt_fEWSGK65Bi)
 
-最近整理的脑图（如需详细，点击图片获取展开内容）
-[![脑图](https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h4ebbmzll5j210p0itmzc.jpg)](https://tva1.sinaimg.cn/large/e6c9d24ely1h4ebbmzll5j210p0itmzc.jpg)
+<!-- 最近整理的脑图（如需详细，点击图片获取展开内容）
+[![脑图](https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h4ebbmzll5j210p0itmzc.jpg)](https://tva1.sinaimg.cn/large/e6c9d24ely1h4ebbmzll5j210p0itmzc.jpg) -->
