@@ -58,7 +58,9 @@ func (g *Group) DoChan(key string, fn func() (interface{}, error)) <-chan Result
   - 返回值：
     - 返回一个channel (`<-chan Result`)，通过该channel可以获取函数调用的结果。
 3. Forget 方法:
+```
 func (g *Group) Forget(key string)
+```
   - 作用： 告诉 singleflight 忘记特定 key 的调用，使得未来对该 key 的调用将重新执行函数，而不是等待之前的调用完成。
   - 参数：
     - key: 要忘记的函数调用的键。
