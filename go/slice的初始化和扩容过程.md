@@ -12,7 +12,7 @@ github_page: https://github.com/jinfeijie/posts/blob/master/go/slice%E7%9A%84%E5
 id: post-20220116195930
 ---
 
-切片和数组在go语言中都是非常常见的结构，很多刚开始使用go语言的开发者会混淆这两者的概念而留下不少隐藏的bug。本篇会从slice编译期、运行时来分析，已更好理解和掌握slice。
+切片和数组在go语言中都是非常常见的结构，很多刚开始使用go语言的开发者会混淆这两者的概念而留下不少隐藏的bug。本篇会从slice编译期、运行时来分析，以更好理解和掌握slice。
 
 ### slice概述
 
