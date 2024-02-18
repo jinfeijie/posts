@@ -177,7 +177,7 @@ func growslice(et *_type, old slice, cap int) slice {
 
 然后通过对齐后的值进行内存开辟，复制原内存内的数据到新开辟的内存上，再内存地址放到新的Slice结构体上返回。
 
-> review代码看到1.18版本后将1024调整为256。在1.22版本抽象了计算新容量的方法 `[nextslicecap](https://github.com/golang/go/commit/1d84b02b228cbd35660e168d26fd2801daed08fe)`
+> review代码看到1.18版本后将1024调整为256。在1.22版本抽象了计算新容量的方法 [`nextslicecap`](https://github.com/golang/go/commit/1d84b02b228cbd35660e168d26fd2801daed08fe)
 
 ```
 // 1.22 版本抽象了计算新容量的方法
