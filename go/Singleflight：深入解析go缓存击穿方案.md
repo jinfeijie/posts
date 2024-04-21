@@ -5,7 +5,7 @@ date: 2024-01-01 00:45:00
 description: 几乎所有的现代化面向web编程的系统都在关注高并发情况下如何降低下游服务的承接压力，go语言也不例外。go语言在并发方面的发力体现在很多个方面，如更轻量化的协程，原子性操作的atomic，抑制函数重复调用的singleflight等。在常规的业务开发中singleflight使用并不多见，本文将会详细介绍singleflight，以深入理解和探索singleflight更多的技术细节和适用场景。
 categories: # 分类
 - go语言系列
-book: Strcpy
+book: 柠芒技术博客
 book_title: Singleflight：深入解析go缓存击穿方案
 github: https://github.com/jinfeijie/posts
 github_page: https://github.com/jinfeijie/posts/blob/master/go/Singleflight%EF%BC%9A%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90go%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF%E6%96%B9%E6%A1%88.md

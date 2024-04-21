@@ -3,7 +3,7 @@ title: 关于
 seo_title: 关于
 categories:
   - 序言
-book: Strcpy
+book: 柠芒技术博客
 book_title: 关于
 date: 2000-12-20 02:47:57
 description:

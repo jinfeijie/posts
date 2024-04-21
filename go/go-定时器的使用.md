@@ -3,7 +3,7 @@ title: go 定时器的使用
 seo_title: go 定时器的使用
 categories:
   - go语言系列
-book: Strcpy
+book: 柠芒技术博客
 book_title: go 定时器的使用
 date: 2021-12-20 02:42:21
 description:

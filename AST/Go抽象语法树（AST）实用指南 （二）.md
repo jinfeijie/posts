@@ -3,7 +3,7 @@ title: Go抽象语法树（AST）实用指南 （二）
 seo_title: Go抽象语法树（AST）实用指南 （二）
 categories:
   - Go语言实战系列
-book: Strcpy
+book: 柠芒技术博客
 book_title: Go抽象语法树（AST）实用指南 （二）
 date: 2021-12-26 23:32:00
 description:

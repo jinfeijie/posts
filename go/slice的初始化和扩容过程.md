@@ -3,7 +3,7 @@ title: slice的初始化和扩容过程
 seo_title: slice的初始化和扩容过程
 categories:
   - go语言系列
-book: Strcpy
+book: 柠芒技术博客
 book_title: slice的初始化和扩容过程
 date: 2022-01-16 19:59:30
 description:
